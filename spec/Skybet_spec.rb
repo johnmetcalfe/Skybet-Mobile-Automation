@@ -37,6 +37,14 @@ describe "Skybet Tests" do
       expect(find('U21')).not_to eq nil
       expect(find('Total Stake')).not_to eq nil
     end
+    it "allows for another football market to be added to the betslip", correctScore:true do
+      findFootballMatch('17:00')
+      find("Correct Score").click
+      find("2-0").click
+      expect(find('U21')).not_to eq nil
+      expect(find('Total Stake')).not_to eq nil
+      expect(find('Czech Republic U21 2-0')).to_not eq nil
+    end
   end
 
 end
