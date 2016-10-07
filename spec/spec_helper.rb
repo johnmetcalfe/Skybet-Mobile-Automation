@@ -76,6 +76,13 @@ def set_mock_gps_if_necessary
   end
 end
 
+def findFootballMatch(specificGameSearch)
+  wait_true{find('login')}
+  wait_true{find_element(xpath:'//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]')}.click
+  wait_true{find('Football')}.click
+  find(specificGameSearch).click
+end
+
 def gps_fix_needed?
   begin
     return true if wait_true(1) {text('location').displayed? || text('Loading...').displayed?}
