@@ -20,8 +20,7 @@ describe "Skybet Tests" do
     # uncomment when test account comes.
     it "Logging in with valid credentials", valid: true do
       login
-      binding.pry
-      my_account
+      goto_my_account
     end
 
     it "Attempt login with invalid details", invalid: true do
@@ -48,22 +47,15 @@ describe "Skybet Tests" do
 
   context "Placing Bets" do
     # Can't Hook onto the odds for each horse.
-    # it "Place a bet on the favourite horse for the next race available", horse: true do
-    #
-    #   burger
-    #   find('Horse Racing').click
-    #   find_element(xpath: '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.widget.GridView[1]/android.view.View[3]/android.view.View[1]/android.view.View[1]').click
-    #   swipe start_x: 0, start_y: 0, end_x: 0, end_y: 50, duration: 500
-    #   wait_true{find('No.')}
-    #   #
-    #   # find('No.').click
-    #   # => find_elements('Price').click
-    #   # binding.pry
-    #
-    #   find_element(xpath: '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[5]/android.widget.ListView[1]/android.view.View[2]/android.widget.GridView[1]/android.view.View[2]/android.view.View[4]').click
-    #
-    #
-    # end
+    it "Place a bet on the favourite horse for the next race available", horse: true do
+
+      burger
+      find('Horse Racing').click
+      find_element(xpath: '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.widget.GridView[1]/android.view.View[5]/android.view.View[1]/android.view.View[1]').click
+      click_first_horse
+      binding.pry
+    end
+  end
   context "Launch using mock GPS location" do
     it "Logging in with valid credentials" do
       #binding.pry
@@ -94,5 +86,4 @@ describe "Skybet Tests" do
       expect(find('Czech Republic U21 2-0')).to_not eq nil
     end
   end
-
 end

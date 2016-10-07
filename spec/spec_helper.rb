@@ -13,15 +13,15 @@ def login
 
   wait_true{find('Log in').displayed?}
   find('Log in').click
+  wait_true {first_textfield.displayed?}
   find_elements(class: 'android.widget.EditText')[0].type 'john2381'
   find_elements(class: 'android.widget.EditText')[1].type '2436'
   button('Log in').click
 
 end
 
-def my_account
-  wait_true{find('?dcmp=Bet_IH_Nav').displayed?}
-  wait_true{find('Go to My Account').displayed?}
+def goto_my_account
+  wait_true {find('Go to My Account').location.y == 198 && find('Go to My Account').location.x == 924}
   find('Go to My Account').click
   find('My Account')
 
@@ -64,9 +64,9 @@ end
 
 def scroll_click(identifier)
   begin
-    swipe start_x: 0, start_y: 0, end_x: 0, end_y: 200, duration: 500
     find(identifier).click
   rescue
+    swipe start_x: 0, start_y: 0, end_x: 0, end_y: 200, duration: 500
     scroll_click identifier
   end
 end
@@ -116,5 +116,14 @@ def gps_fix_needed?
     rescue
       set_mock_gps_if_necessary
     end
+  end
+end
+
+def click_first_horse
+  begin
+    find_elements(class: 'android.view.View').select {|v| v.location.x == 810 && v.name =~ /\d\/\d/}.first.click
+  rescue
+    swipe start_x: 0, start_y: 0, end_x: 0, end_y: 200, duration: 500
+    click_first_horse
   end
 end
