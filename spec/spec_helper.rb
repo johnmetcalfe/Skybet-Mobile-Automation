@@ -83,7 +83,7 @@ def gps_fix_needed?
     begin
       return false if wait_true(1) {find('Accumulators').displayed?}
     rescue
-      setup_fake_gps_location
+      set_mock_gps_if_necessary
     end
   end
 end
