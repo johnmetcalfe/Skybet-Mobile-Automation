@@ -18,7 +18,26 @@ describe "Skybet Tests" do
 
   context "Launch using mock GPS location" do
     it "Logging in with valid credentials" do
-      binding.pry
+      wait_true{find('Log in').displayed?}
+      find('Log in').click
+      find_elements(class: 'android.widget.EditText')[0].type 'User ID'
+      find_elements(class: 'android.widget.EditText')[1].type 'PIN'
+      button('Log in').click
+      sleep 2
+      wait_true{find('Go to My Account').displayed?}
+      find('Go to My Account').click
+      find('My Account')
+    end
+    it "Attempt login with invalid details", invalid: true do
+
+      wait_true{find('Log in').displayed?}
+      find('Log in').click
+      find_elements(class: 'android.widget.EditText')[0].type 'User ID'
+      find_elements(class: 'android.widget.EditText')[1].type 'PIN'
+      button('Log in').click
+      sleep 2
+      find('Sorry, there\'s been a problem logging into your account')
+
     end
   end
 end

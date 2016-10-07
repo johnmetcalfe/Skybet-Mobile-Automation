@@ -14,7 +14,7 @@ def desired_capabilities
     caps: {
       platformName: "Android",
       deviceName: "emulator-5554",
-      app: "./binaries/Tumblr.apk",
+      app: "./binaries/skybet.apk",
       newCommandTimeout:600
     },
     appium_lib: {
@@ -41,7 +41,7 @@ end
 def scroll_click(identifier)
   begin
     swipe start_x: 0, start_y: 0, end_x: 0, end_y: 200, duration: 500
-    find('Allow mock locations').click
+    find(identifier).click
   rescue
     scroll_click identifier
   end
@@ -83,7 +83,7 @@ def gps_fix_needed?
     begin
       return false if wait_true(1) {find('Accumulators').displayed?}
     rescue
-      setup_fake_gps_location
+      set_mock_gps_if_necessary
     end
   end
 end
