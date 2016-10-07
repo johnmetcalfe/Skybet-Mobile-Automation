@@ -14,7 +14,7 @@ def desired_capabilities
     caps: {
       platformName: "Android",
       deviceName: "emulator-5554",
-      app: "./binaries/Tumblr.apk",
+      app: "./binaries/skybet.apk",
       newCommandTimeout:600
     },
     appium_lib: {
