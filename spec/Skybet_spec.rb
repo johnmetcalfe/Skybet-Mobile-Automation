@@ -8,9 +8,9 @@ describe "Skybet Tests" do
     set_mock_gps_if_necessary
   end
 
-  # before :each do
-  #   $driver.start_driver
-  # end
+  before :each do
+    $driver.start_driver
+  end
 
   after :all do
     $driver.driver_quit
