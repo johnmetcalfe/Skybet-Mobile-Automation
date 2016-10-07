@@ -9,6 +9,30 @@ RSpec.configure do|config|
   config.formatter = :documentation
 end
 
+def login
+
+  wait_true{find('Log in').displayed?}
+  find('Log in').click
+  find_elements(class: 'android.widget.EditText')[0].type 'john2381'
+  find_elements(class: 'android.widget.EditText')[1].type '2436'
+  button('Log in').click
+
+end
+
+def my_account
+  wait_true{find('?dcmp=Bet_IH_Nav').displayed?}
+  wait_true{find('Go to My Account').displayed?}
+  find('Go to My Account').click
+  find('My Account')
+
+end
+
+def burger
+
+  wait_true{find_element(xpath: '//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]')}.click
+
+end
+
 def desired_capabilities
   {
     caps: {
