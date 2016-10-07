@@ -18,7 +18,18 @@ describe "Skybet Tests" do
 
   context "Launch using mock GPS location" do
     it "Logging in with valid credentials" do
-      binding.pry
+      #binding.pry
     end
+  end
+
+  context "find specific markets" do
+    it "locates a specific football match" do
+      wait_true{find('login')}
+      wait_true{find_element(xpath:'//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]')}.click
+      wait_true{find('Football')}.click
+      find('17:00').click
+      expect(find('Euro U21 Qualifier')).not_to eq nil
+    end
+
   end
 end
