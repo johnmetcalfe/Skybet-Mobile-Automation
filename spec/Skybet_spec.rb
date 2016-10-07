@@ -24,12 +24,19 @@ describe "Skybet Tests" do
 
   context "find specific markets" do
     it "locates a specific football match" do
-      wait_true{find('login')}
-      wait_true{find_element(xpath:'//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.webkit.WebView[1]/android.webkit.WebView[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]')}.click
-      wait_true{find('Football')}.click
-      find('17:00').click
+      findFootballMatch('17:00')
       expect(find('Euro U21 Qualifier')).not_to eq nil
     end
-
   end
+
+  context "Bet on specific markets", market:true do
+    it "allows for a out right football bet to be placed" do
+      findFootballMatch('17:00')
+      #binding.pry
+      find("Win").click
+      expect(find('U21')).not_to eq nil
+      expect(find('Total Stake')).not_to eq nil
+    end
+  end
+
 end
